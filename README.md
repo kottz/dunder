@@ -1,5 +1,4 @@
-# MOUSE
-# Minimal Output User Signal Encoder
+# MOUSE - Minimal Output User Signal Encoder
 
 _Questions for Per:_
 1. What are the requirements for a 5?
@@ -10,6 +9,7 @@ _Questions for Per:_
 6. Will a memory be necessary to implement or can the MCU store enough data? (regarding LED modes, user settings, etc)
 
 _**Intended features**_
+-----------
 - USB powered: no need to reinvent the wheel for this **AMAZING** product!
 - Scroll wheel "brake function" - One should be able to unlock the scroll wheel so it can spin freely and lock it with one and the same button.
 - Button functionality built into the scroll wheel - One should be able to click the scroll wheel.
@@ -23,7 +23,7 @@ _**Intended features**_
 - Different profiles can be stored on the mouse. Change profile through some combination of button presses. Indicate the profiles with the LEDs.
 - Custom shell. 3D printed.
 
-MAINTAINERS
+**_Contributors_**
 -----------
 
 Current maintainers:
