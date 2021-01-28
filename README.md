@@ -22,3 +22,11 @@ _**Intended features**_
 - Programmable macros should be implemented in software. No dedicated extra button for macros needed. Make it possible to rebind forward/back for example.
 - Different profiles can be stored on the mouse. Change profile through some combination of button presses. Indicate the profiles with the LEDs.
 - Custom shell. 3D printed.
+
+MAINTAINERS
+-----------
+
+Current maintainers:
+Edward Källstedt - edwkll-7@student.ltu.se
+Kalle Löfgren - kallfg-3@student.ltu.se
+Carmen Acín Rouco - caracn-0@student.ltu.se
