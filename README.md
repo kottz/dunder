@@ -26,7 +26,8 @@ _**Intended features**_
 **_Contributors_**
 -----------
 
-Current maintainers:
 Edward Källstedt - edwkll-7@student.ltu.se
+
 Kalle Löfgren - kallfg-3@student.ltu.se
+
 Carmen Acín Rouco - caracn-0@student.ltu.se
