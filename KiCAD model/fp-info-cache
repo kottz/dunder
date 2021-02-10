@@ -1,4 +1,4 @@
-19082540199368451
+19084154471345551
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -300,13 +300,6 @@ battery CR-3032 coin cell vertical
 0
 2
 2
-Battery
-PMW3389
-
-
-0
-16
-16
 Button_Switch_Keyboard
 SW_Cherry_MX_1.00u_PCB
 Cherry MX keyswitch, 1.00u, PCB mount, http://cherryamericas.com/wp-content/uploads/2014/12/mx_cat.pdf
@@ -48775,6 +48768,20 @@ THT ceramic resonator filter DSS6
 0
 3
 3
+Custom
+PEC12R-2120F-N0012
+
+
+0
+0
+0
+Custom
+PMW3389
+
+
+0
+16
+16
 Diode_SMD
 D_0201_0603Metric
 Diode SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
