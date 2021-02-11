@@ -1021,7 +1021,7 @@ U 1 1 601B3570
 P 10150 2700
 F 0 "TP7" H 10208 2818 50  0000 L CNN
 F 1 "NRST" H 10208 2727 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 10350 2700 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 10350 2700 50  0001 C CNN
 F 3 "~" H 10350 2700 50  0001 C CNN
 	1    10150 2700
 	1    0    0    -1  
@@ -1099,7 +1099,7 @@ U 1 1 60824766
 P 6000 1200
 F 0 "TP16" H 6058 1318 50  0000 L CNN
 F 1 "wheel_click" H 6058 1227 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 6200 1200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 6200 1200 50  0001 C CNN
 F 3 "~" H 6200 1200 50  0001 C CNN
 	1    6000 1200
 	1    0    0    1   
@@ -1747,7 +1747,7 @@ U 1 1 60EFB280
 P 4400 6450
 F 0 "TP20" H 4458 6568 50  0000 L CNN
 F 1 "NCS" H 4458 6477 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4600 6450 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4600 6450 50  0001 C CNN
 F 3 "~" H 4600 6450 50  0001 C CNN
 	1    4400 6450
 	1    0    0    -1  
@@ -1758,7 +1758,7 @@ U 1 1 60F2BC56
 P 4100 6450
 F 0 "TP2" H 4158 6568 50  0000 L CNN
 F 1 "MOSI" H 4158 6477 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4300 6450 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4300 6450 50  0001 C CNN
 F 3 "~" H 4300 6450 50  0001 C CNN
 	1    4100 6450
 	1    0    0    -1  
@@ -1780,7 +1780,7 @@ U 1 1 6107F83F
 P 4100 6950
 F 0 "TP3" H 4158 7068 50  0000 L CNN
 F 1 "SCK" H 4158 6977 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4300 6950 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4300 6950 50  0001 C CNN
 F 3 "~" H 4300 6950 50  0001 C CNN
 	1    4100 6950
 	1    0    0    -1  
@@ -1791,7 +1791,7 @@ U 1 1 610979A7
 P 4350 6950
 F 0 "TP18" H 4408 7068 50  0000 L CNN
 F 1 "Motion" H 4408 6977 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4550 6950 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4550 6950 50  0001 C CNN
 F 3 "~" H 4550 6950 50  0001 C CNN
 	1    4350 6950
 	1    0    0    -1  
@@ -1802,7 +1802,7 @@ U 1 1 610AFC53
 P 4650 6450
 F 0 "TP24" H 4708 6568 50  0000 L CNN
 F 1 "MISO" H 4708 6477 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4850 6450 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4850 6450 50  0001 C CNN
 F 3 "~" H 4850 6450 50  0001 C CNN
 	1    4650 6450
 	1    0    0    -1  
@@ -1834,7 +1834,7 @@ U 1 1 6123CCCE
 P 4700 6950
 F 0 "TP25" H 4758 7068 50  0000 L CNN
 F 1 "GRD" H 4758 6977 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4900 6950 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4900 6950 50  0001 C CNN
 F 3 "~" H 4900 6950 50  0001 C CNN
 	1    4700 6950
 	1    0    0    -1  
@@ -1859,7 +1859,7 @@ U 1 1 613BA215
 P 3900 850
 F 0 "TP1" H 3958 968 50  0000 L CNN
 F 1 "5V" H 3958 877 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4100 850 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4100 850 50  0001 C CNN
 F 3 "~" H 4100 850 50  0001 C CNN
 	1    3900 850 
 	1    0    0    -1  
@@ -1881,7 +1881,7 @@ U 1 1 613EF1B1
 P 4150 850
 F 0 "TP6" H 4208 968 50  0000 L CNN
 F 1 "3.3V" H 4208 877 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4350 850 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4350 850 50  0001 C CNN
 F 3 "~" H 4350 850 50  0001 C CNN
 	1    4150 850 
 	1    0    0    -1  
@@ -1903,7 +1903,7 @@ U 1 1 61439D6C
 P 4400 850
 F 0 "TP19" H 4458 968 50  0000 L CNN
 F 1 "VDD" H 4458 877 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4600 850 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4600 850 50  0001 C CNN
 F 3 "~" H 4600 850 50  0001 C CNN
 	1    4400 850 
 	1    0    0    -1  
@@ -1936,7 +1936,7 @@ U 1 1 614855F6
 P 4650 850
 F 0 "TP21" H 4708 968 50  0000 L CNN
 F 1 "GND" H 4708 877 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4850 850 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4850 850 50  0001 C CNN
 F 3 "~" H 4850 850 50  0001 C CNN
 	1    4650 850 
 	1    0    0    -1  
@@ -1955,7 +1955,7 @@ U 1 1 615BA919
 P 5400 1200
 F 0 "TP27" H 5458 1318 50  0000 L CNN
 F 1 "MCO2" H 5458 1227 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 5600 1200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 5600 1200 50  0001 C CNN
 F 3 "~" H 5600 1200 50  0001 C CNN
 	1    5400 1200
 	1    0    0    1   
@@ -1978,7 +1978,7 @@ U 1 1 615A1620
 P 5100 1200
 F 0 "TP26" H 5158 1318 50  0000 L CNN
 F 1 "MCO1" H 5158 1227 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 5300 1200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 5300 1200 50  0001 C CNN
 F 3 "~" H 5300 1200 50  0001 C CNN
 	1    5100 1200
 	1    0    0    1   
@@ -2000,7 +2000,7 @@ U 1 1 617B148E
 P 5700 1200
 F 0 "TP28" H 5758 1318 50  0000 L CNN
 F 1 "GND" H 5758 1227 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 5900 1200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 5900 1200 50  0001 C CNN
 F 3 "~" H 5900 1200 50  0001 C CNN
 	1    5700 1200
 	1    0    0    1   
@@ -2019,7 +2019,7 @@ U 1 1 618F0AAF
 P 6500 1200
 F 0 "TP29" H 6558 1318 50  0000 L CNN
 F 1 "Scroll_a" H 6558 1227 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 6700 1200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 6700 1200 50  0001 C CNN
 F 3 "~" H 6700 1200 50  0001 C CNN
 	1    6500 1200
 	1    0    0    1   
@@ -2049,7 +2049,7 @@ U 1 1 619AB575
 P 10750 4500
 F 0 "TP30" H 10808 4618 50  0000 L CNN
 F 1 "BOOT0" H 10808 4527 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 10950 4500 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 10950 4500 50  0001 C CNN
 F 3 "~" H 10950 4500 50  0001 C CNN
 	1    10750 4500
 	1    0    0    -1  
@@ -2091,7 +2091,7 @@ U 1 1 61C7C487
 P 4350 2450
 F 0 "TP17" H 4408 2568 50  0000 L CNN
 F 1 "in_D+" H 4408 2477 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4550 2450 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4550 2450 50  0001 C CNN
 F 3 "~" H 4550 2450 50  0001 C CNN
 	1    4350 2450
 	1    0    0    -1  
@@ -2102,7 +2102,7 @@ U 1 1 61CAF95D
 P 4650 2450
 F 0 "TP23" H 4708 2568 50  0000 L CNN
 F 1 "out_D+" H 4708 2477 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4850 2450 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4850 2450 50  0001 C CNN
 F 3 "~" H 4850 2450 50  0001 C CNN
 	1    4650 2450
 	1    0    0    -1  
@@ -2113,7 +2113,7 @@ U 1 1 61CC914B
 P 4350 1800
 F 0 "TP8" H 4408 1918 50  0000 L CNN
 F 1 "in_D-" H 4408 1827 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4550 1800 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4550 1800 50  0001 C CNN
 F 3 "~" H 4550 1800 50  0001 C CNN
 	1    4350 1800
 	1    0    0    -1  
@@ -2124,7 +2124,7 @@ U 1 1 61CE2BBC
 P 4650 1800
 F 0 "TP22" H 4708 1918 50  0000 L CNN
 F 1 "out_D-" H 4708 1827 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4850 1800 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4850 1800 50  0001 C CNN
 F 3 "~" H 4850 1800 50  0001 C CNN
 	1    4650 1800
 	1    0    0    -1  
@@ -2166,7 +2166,7 @@ U 1 1 628DBFFB
 P 6900 1200
 F 0 "TP14" H 6958 1318 50  0000 L CNN
 F 1 "Scroll_b" H 6958 1227 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 7100 1200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 7100 1200 50  0001 C CNN
 F 3 "~" H 7100 1200 50  0001 C CNN
 	1    6900 1200
 	1    0    0    1   
@@ -2214,7 +2214,7 @@ U 1 1 601AABDA
 P 6050 2900
 F 0 "TP4" H 6108 3018 50  0000 L CNN
 F 1 "TestPoint" H 6108 2927 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 6250 2900 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 6250 2900 50  0001 C CNN
 F 3 "~" H 6250 2900 50  0001 C CNN
 	1    6050 2900
 	-1   0    0    1   
@@ -2242,7 +2242,7 @@ $EndComp
 Text GLabel 6900 1150 1    50   Input ~ 0
 Scroll_b
 $Comp
-L D2F-FL:D2F-FL S1
+L Lab1-rescue:D2F-FL-D2F-FL S1
 U 1 1 6034E202
 P 1350 4200
 F 0 "S1" H 1350 4481 50  0000 C CNN
@@ -2327,7 +2327,7 @@ U 1 1 606FEE71
 P 900 3800
 F 0 "TP5" H 958 3918 50  0000 L CNN
 F 1 "TestPoint" H 958 3827 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 1100 3800 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 1100 3800 50  0001 C CNN
 F 3 "~" H 1100 3800 50  0001 C CNN
 	1    900  3800
 	1    0    0    -1  
@@ -2367,7 +2367,7 @@ Wire Wire Line
 	1250 4550 1250 4600
 NoConn ~ 1450 4500
 $Comp
-L D2F-FL:D2F-FL S2
+L Lab1-rescue:D2F-FL-D2F-FL S2
 U 1 1 60880B22
 P 1450 5550
 F 0 "S2" H 1450 5831 50  0000 C CNN
@@ -2436,7 +2436,7 @@ U 1 1 60880B43
 P 1000 5150
 F 0 "TP9" H 1058 5268 50  0000 L CNN
 F 1 "TestPoint" H 1058 5177 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 1200 5150 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 1200 5150 50  0001 C CNN
 F 3 "~" H 1200 5150 50  0001 C CNN
 	1    1000 5150
 	1    0    0    -1  
@@ -2476,7 +2476,7 @@ Wire Wire Line
 	1350 5900 1350 5950
 NoConn ~ 1550 5850
 $Comp
-L D2F-FL:D2F-FL S3
+L Lab1-rescue:D2F-FL-D2F-FL S3
 U 1 1 608B0D57
 P 2900 4200
 F 0 "S3" H 2900 4481 50  0000 C CNN
@@ -2545,7 +2545,7 @@ U 1 1 608B0D78
 P 2450 3800
 F 0 "TP10" H 2508 3918 50  0000 L CNN
 F 1 "TestPoint" H 2508 3827 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 2650 3800 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 2650 3800 50  0001 C CNN
 F 3 "~" H 2650 3800 50  0001 C CNN
 	1    2450 3800
 	1    0    0    -1  
@@ -2585,7 +2585,7 @@ Wire Wire Line
 	2800 4550 2800 4600
 NoConn ~ 3000 4500
 $Comp
-L D2F-FL:D2F-FL S4
+L Lab1-rescue:D2F-FL-D2F-FL S4
 U 1 1 608E2D04
 P 3000 5550
 F 0 "S4" H 3000 5831 50  0000 C CNN
@@ -2654,7 +2654,7 @@ U 1 1 608E2D25
 P 2550 5150
 F 0 "TP11" H 2608 5268 50  0000 L CNN
 F 1 "TestPoint" H 2608 5177 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 2750 5150 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 2750 5150 50  0001 C CNN
 F 3 "~" H 2750 5150 50  0001 C CNN
 	1    2550 5150
 	1    0    0    -1  
@@ -2694,7 +2694,7 @@ Wire Wire Line
 	2900 5900 2900 5950
 NoConn ~ 3100 5850
 $Comp
-L D2F-FL:D2F-FL S5
+L Lab1-rescue:D2F-FL-D2F-FL S5
 U 1 1 6090304B
 P 4400 4200
 F 0 "S5" H 4400 4481 50  0000 C CNN
@@ -2763,7 +2763,7 @@ U 1 1 6090306C
 P 3950 3800
 F 0 "TP12" H 4008 3918 50  0000 L CNN
 F 1 "TestPoint" H 4008 3827 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4150 3800 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4150 3800 50  0001 C CNN
 F 3 "~" H 4150 3800 50  0001 C CNN
 	1    3950 3800
 	1    0    0    -1  
@@ -2803,7 +2803,7 @@ Wire Wire Line
 	4300 4550 4300 4600
 NoConn ~ 4500 4500
 $Comp
-L D2F-FL:D2F-FL S6
+L Lab1-rescue:D2F-FL-D2F-FL S6
 U 1 1 609243E2
 P 4500 5550
 F 0 "S6" H 4500 5831 50  0000 C CNN
@@ -2872,7 +2872,7 @@ U 1 1 60924403
 P 4050 5150
 F 0 "TP13" H 4108 5268 50  0000 L CNN
 F 1 "TestPoint" H 4108 5177 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_1.5x1.5mm" H 4250 5150 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5015_Micro-Minature" H 4250 5150 50  0001 C CNN
 F 3 "~" H 4250 5150 50  0001 C CNN
 	1    4050 5150
 	1    0    0    -1  
@@ -3051,7 +3051,7 @@ F 3 "~" H 6150 4560 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L D2F-FL:D2F-FL S7
+L Lab1-rescue:D2F-FL-D2F-FL S7
 U 1 1 60A1D62C
 P 7150 4950
 F 0 "S7" H 7150 5231 50  0000 C CNN
@@ -3124,7 +3124,7 @@ Wire Notes Line
 Wire Notes Line
 	7350 3600 7350 4800
 $Comp
-L 1825910-6:1825910-6 SW1
+L Lab1-rescue:1825910-6-1825910-6 SW1
 U 1 1 60273442
 P 10150 3550
 F 0 "SW1" V 10196 3322 50  0000 R CNN
