@@ -28,7 +28,7 @@ _**Intended features**_
 **_Contributors_**
 -----------
 
-Edward Källstedt - edwkll-7@student.ltu.se
+Edward Källstedt - edwkll-7@student.ltu.se (Grade goal 5)
 
 Kalle Löfgren - kallfg-3@student.ltu.se
 
