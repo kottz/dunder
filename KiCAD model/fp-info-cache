@@ -1,4 +1,4 @@
-19085767598425397
+19088994556306425
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -6124,6 +6124,41 @@ capacitor tantalum
 0
 2
 2
+Components
+EC10E1220505
+
+
+0
+3
+3
+Components
+LED_RGB_1210
+RGB LED 3.2x2.7mm http://www.avagotech.com/docs/AV02-0610EN
+LED 3227
+0
+4
+4
+Components
+LED_RGB_1210_RND_135-00251
+RGB LED 3.2x2.7mm http://www.avagotech.com/docs/AV02-0610EN
+LED 3227
+0
+4
+4
+Components
+SW_1825910-6-4
+
+
+0
+4
+4
+Components
+SW_D2F-FL
+
+
+0
+3
+3
 Connector
 Banana_Jack_1Pin
 Single banana socket, footprint - 6mm drill
@@ -48768,27 +48803,6 @@ THT ceramic resonator filter DSS6
 0
 3
 3
-Custom
-PEC12R-2120F-N0012
-
-
-0
-3
-3
-Custom
-PMW3389
-
-
-0
-16
-16
-Desktop
-SW_1825910-6-4
-
-
-0
-4
-4
 Diode_SMD
 D_0201_0603Metric
 Diode SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
