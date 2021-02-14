@@ -15,7 +15,7 @@ Rotary encoder - https://se.rs-online.com/web/p/mechanical-rotary-encoders/72955
 
 SWD 6pin connector - https://www.elfa.se/sv/rak-hane-kretskortslist-genomgaende-hal-rader-kontakter-54mm-stiftavstand-rnd-connect-rnd-205-00627/p/30093647?q=&pos=16&origPos=16&origPageSize=50&track=true
 
-test points - https://www.digikey.se/product-detail/sv/keystone-electronics/5015/36-5015CT-ND/278886
+test points - https://www.digikey.se/product-detail/sv/RCU-0C/A106145CT-ND/3477802/?itemSeq=354551470
 
 ---
 5V-> 3.3V - https://www.elfa.se/sv/ldo-voltage-regulator-3v-360ma-sot-23-diodes-incorporated-ap2125n-3trg1/p/30041163
