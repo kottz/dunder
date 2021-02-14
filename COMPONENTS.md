@@ -1,5 +1,5 @@
 # Components
-USB connector - https://www.elfa.se/sv/usb-kontaktdon-micro-usb-uttag-horisontalt-poler-wuerth-elektronik-629105150521/p/30009163?track=true&no-cache=true&marketingPopup=false
+USB connector - https://www.elfa.se/sv/usb-kontaktdon-usb-uttag-vertikal-poler-wuerth-elektronik-614105150721/p/30009161
 
 USB ESD protection thing - https://www.elfa.se/sv/esd-skyddsdiod-dubbelriktad-25v-sot-23-st-usblc6-2sc6/p/30034148
 
@@ -9,9 +9,7 @@ jumper connector and plastic pin - https://www.elfa.se/sv/rak-hane-kretskortslis
 
 3x color led - https://www.elfa.se/sv/rgb-smd-lysdiod-1210-468nm-gr-520nm-632nm-rnd-components-rnd-135-00251/p/30158846?q=led+rgb&pos=1&origPos=1&origPageSize=50&track=true
 
-3x debug led - https://www.elfa.se/sv/rgb-smd-lysdiod-1210-468nm-gr-520nm-632nm-rnd-components-rnd-135-00251/p/30158846?q=led+rgb&pos=1&origPos=1&origPageSize=50&track=true
-
-Rotary encoder - https://se.rs-online.com/web/p/mechanical-rotary-encoders/1727599
+Rotary encoder - https://se.rs-online.com/web/p/mechanical-rotary-encoders/7295545
 
 7x mouse buttons - https://www.elfa.se/sv/mikrobrytare-d2f-100ma-1co-74n-kolv-omron-electronic-components-d2f-01f/p/11082662
 
