@@ -14,6 +14,17 @@ _**Design overview**_
 -----------
 ![Initial Design Diagram](Pictures/Gaming_Mouse.jpg)
 
+- Buttons provide:
+1. Right and left click.
+2. Forward and backwards, which are two macro buttons.
+3. Sense up and sense down, two buttons to control mouse sensitivity.
+
+- Sensor provide position data.
+
+- PSU provide:
+1. 3.3V to the buttons and mcu.
+2. 1.9V to the sensor.
+
 _**Circuit design**_
 -----------
 
