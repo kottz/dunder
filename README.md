@@ -16,8 +16,9 @@ _**Design overview**_
 
 _Buttons provide:_
 1. Right and left click.
-2. Forward and backwards, which are two macro buttons.
-3. Sense up and sense down, two buttons to control mouse sensitivity.
+2. Mouse wheel click.
+3. Forward and backwards, which are two macro buttons.
+4. Sense up and sense down, two buttons to control mouse sensitivity.
 
 _Sensor provide position data._
 
