@@ -1,6 +1,6 @@
-# MOUSE - Minimal Output User Signal Encoder
+## MOUSE - Minimal Output User Signal Encoder
 
-_**Intended features**_
+# _**Intended features**_
 -----------
 - Button functionality built into the scroll wheel - One should be able to click the scroll wheel.
 - additional buttons found on the mouse: 
@@ -10,7 +10,7 @@ _**Intended features**_
 - Led user settings.
 - Custom shell. 3D printed.
 
-_**Design overview**_
+# _**Design overview**_
 -----------
 ![Overview diagram](Pictures/Gaming_Mouse.jpg)
 
@@ -26,7 +26,7 @@ _PSU provide:_
 1. 3.3V to the buttons and mcu.
 2. 1.9V to the sensor.
 
-_**Circuit design**_
+# _**Circuit design**_
 -----------
 
 # _**Board design**_
@@ -40,10 +40,10 @@ _**Real board**_
 -----------
 ![Real board picture](Pictures/Real_board.jpg)
 
-_**Custom shell**_
+# _**Custom shell**_
 -----------
 
-**_Contributors_**
+# **_Contributors_**
 -----------
 
 Edward Källstedt - edwkll-7@student.ltu.se (Grade goal 5)
