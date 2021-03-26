@@ -10,6 +10,8 @@ _**Intended features**_
 - Led user settings.
 - Custom shell. 3D printed.
 
+_**Design overview**_
+-----------
 ![Initial Design Diagram](Gaming_Mouse.jpg)
 
 **_Contributors_**
