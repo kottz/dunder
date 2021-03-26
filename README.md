@@ -28,7 +28,7 @@ _PSU provide:_
 _**Circuit design**_
 -----------
 
-_**Board design**_
+# _**Board design**_
 -----------
 ![KiCAD model](Pictures/Insert_name_here.png)
 ![3D model diagram](Pictures/3d_board.png)
