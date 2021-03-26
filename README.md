@@ -14,6 +14,15 @@ _**Design overview**_
 -----------
 ![Initial Design Diagram](Gaming_Mouse.jpg)
 
+_**Circuit design**_
+-----------
+
+_**Board design**_
+-----------
+
+_**Custom shell**_
+-----------
+
 **_Contributors_**
 -----------
 
