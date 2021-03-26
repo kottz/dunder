@@ -12,7 +12,7 @@ _**Intended features**_
 
 _**Design overview**_
 -----------
-![Initial Design Diagram](Pictures/Gaming_Mouse.jpg)
+![Overview diagram](Pictures/Gaming_Mouse.jpg)
 
 _Buttons provide:_
 1. Right and left click.
@@ -30,6 +30,7 @@ _**Circuit design**_
 
 _**Board design**_
 -----------
+![Overview diagram](Pictures/3d_board.jpg)
 
 _**Custom shell**_
 -----------
