@@ -30,7 +30,9 @@ _**Circuit design**_
 
 _**Board design**_
 -----------
-![Overview diagram](Pictures/3d_board.png)
+![KiCAD model](Pictures/Insert_name_here.png)
+![3D model diagram](Pictures/3d_board.png)
+![Real board picture](Pictures/Real_board.png)
 
 _**Custom shell**_
 -----------
