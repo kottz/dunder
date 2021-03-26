@@ -23,7 +23,7 @@ _**Intended features**_
 - Different profiles can be stored on the mouse. Change profile through some combination of button presses. Indicate the profiles with the LEDs.
 - Custom shell. 3D printed.
 
-![Initial Design Diagram](gaming_mouse_v0.1.jpg)
+![Initial Design Diagram](gaming_mouse.jpg)
 
 **_Contributors_**
 -----------
