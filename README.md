@@ -12,7 +12,7 @@ _**Intended features**_
 
 _**Design overview**_
 -----------
-![Initial Design Diagram](Gaming_Mouse.jpg)
+![Initial Design Diagram](Pictures/Gaming_Mouse.jpg)
 
 _**Circuit design**_
 -----------
