@@ -1,13 +1,5 @@
 # MOUSE - Minimal Output User Signal Encoder
 
-_Questions for Per:_
-1. What are the requirements for a 5?
-2. Do you have to implement wireless functionality?
-3. Individual LEDs or programmable LED strip?
-4. How would one go about selectively turning LEDs on? The ones we've implemented in lab 1 were "indication leds". 
-5. Is the scroll wheel a component? If not, will we need to make the wheel ourselves?
-6. Will a memory be necessary to implement or can the MCU store enough data? (regarding LED modes, user settings, etc)
-
 _**Intended features**_
 -----------
 - USB powered: no need to reinvent the wheel for this **AMAZING** product!
