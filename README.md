@@ -36,9 +36,11 @@ _**KiCAD diagram**_
 _**KiCAD model**_
 -----------
 ![KiCAD model](Pictures/board_footprints.png)
+
 _**3D model**_
 -----------
 ![3D model diagram](Pictures/3d_board.png)
+
 _**Real board**_
 -----------
 ![Real board picture](Pictures/Real_board.jpg)
