@@ -30,7 +30,7 @@ _**Circuit design**_
 
 _**Board design**_
 -----------
-![Overview diagram](Pictures/3d_board.jpg)
+![Overview diagram](Pictures/3d_board.png)
 
 _**Custom shell**_
 -----------
