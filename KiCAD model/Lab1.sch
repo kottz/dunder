@@ -220,9 +220,9 @@ Wire Wire Line
 	6800 2700 6800 2850
 Wire Wire Line
 	6800 2400 6800 2600
-Text GLabel 8900 2700 2    50   BiDi ~ 0
+Text GLabel 8900 2800 2    50   BiDi ~ 0
 SWDIO
-Text GLabel 8900 2800 2    50   Input ~ 0
+Text GLabel 8900 2900 2    50   Input ~ 0
 SWCLK
 Wire Wire Line
 	8850 2800 8900 2800
@@ -433,9 +433,9 @@ Text GLabel 7450 3300 0    50   Input ~ 0
 MISO
 Text GLabel 7450 3400 0    50   Input ~ 0
 MOSI
-Text GLabel 8850 2600 2    50   Output ~ 0
+Text GLabel 8850 2700 2    50   Output ~ 0
 OUT_D+
-Text GLabel 8850 2500 2    50   Output ~ 0
+Text GLabel 8850 2600 2    50   Output ~ 0
 OUT_D-
 Text GLabel 8850 3500 2    50   Output ~ 0
 SWO
@@ -1209,8 +1209,6 @@ Wire Wire Line
 	8900 2300 8850 2300
 Wire Wire Line
 	8850 2400 8900 2400
-Wire Wire Line
-	8900 2500 8850 2500
 $Comp
 L Connector:Conn_01x06_Male J2
 U 1 1 60081960
@@ -1811,9 +1809,7 @@ Wire Wire Line
 	4350 2500 4350 2450
 Wire Wire Line
 	4650 2500 4650 2450
-Wire Wire Line
-	8900 2700 8850 2700
-Text GLabel 8900 2900 2    50   Input ~ 0
+Text GLabel 8850 2500 2    50   Input ~ 0
 Scroll_a
 Text GLabel 8900 3000 2    50   Input ~ 0
 Scroll_b
