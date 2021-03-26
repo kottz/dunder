@@ -32,7 +32,7 @@ _**Board design**_
 -----------
 ![KiCAD model](Pictures/Insert_name_here.png)
 ![3D model diagram](Pictures/3d_board.png)
-![Real board picture](Pictures/Real_board.png)
+![Real board picture](Pictures/Real_board.jpg)
 
 _**Custom shell**_
 -----------
