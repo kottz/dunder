@@ -304,16 +304,16 @@ const APP: () = {
         
         let (x, y) = cx.resources.pmw3389.read_status().unwrap();
         //rprintln!("{} {}", x as i64, y as i64);
-        POS_X += x as i64;
-        POS_Y += y as i64;
+        POS_X = x as f32;
+        POS_Y = y as f32;
         let report = PMouseReport {
             buttons: ((M1_click.is_high().unwrap() as u8) << 4
                 | (M2_click.is_high().unwrap() as u8) << 3
                 | (w_click.is_high().unwrap() as u8) << 2
                 | (r_click.is_high().unwrap() as u8) << 1
                 | (l_click.is_high().unwrap() as u8)),
-            x: (-x as i8)>>1,
-            y: (-y as i8)>>1,
+            x: ((-POS_X * *myScaler) as i8)>>1,
+            y: ((-POS_Y * *myScaler) as i8)>>1,
             wheel: wheel_count,
         };
         hid.push_input(&report).ok();
