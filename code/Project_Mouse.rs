@@ -1,10 +1,3 @@
-//! rtic_bare7.rs
-//!
-//! HAL OutputPin abstractions
-//!
-//! What it covers:
-//! - using embedded hal, and the OutputPin abstraction
-
 #![no_main]
 #![no_std]
 use embedded_hal::spi::MODE_3;
@@ -84,7 +77,7 @@ use stm32f4xx_hal::nb::block;
 //use rtic_core::Mutex;
 
 use stm32f4xx_hal::{
-    gpio::{gpioa::PA9},
+    gpio::{gpioa::PA7, gpioa::PA8, gpioa::PA9},
     gpio::{gpioa::PA0, gpioa::PA1, gpioa::PA2, gpioa::PA3, gpioa::PA4, gpioa::PA5, gpioa::PA6, gpioa::PA10, gpioa::PA15, Input, PullUp},
     //gpio::{gpioc::PC10},
     //gpio::{gpioc::PC12},
@@ -100,7 +93,9 @@ const APP: () = {
         hid: HIDClass<'static, UsbBusType>,
         usb_dev: UsbDevice<'static, UsbBusType>,
         pmw3389: PMW3389T,
-        led: PA9<Output<PushPull>>,
+        led_r: PA7<Output<PushPull>>,
+        led_g: PA8<Output<PushPull>>,
+        led_b: PA9<Output<PushPull>>,
         r_click: PA1<Input<PullUp>>,
         l_click: PA0<Input<PullUp>>,
         w_click: PA6<Input<PullUp>>,
@@ -201,7 +196,9 @@ const APP: () = {
             //GPIOA: device.GPIOA,
             hid,
             usb_dev,
-            led: gpioa.pa9.into_push_pull_output(), //split the GPIOA into pins, choose pa5 and convert into push/pull output (this took a while to figure out)
+            led_r: gpioa.pa7.into_push_pull_output(),
+            led_g: gpioa.pa8.into_push_pull_output(),
+            led_b: gpioa.pa9.into_push_pull_output(),
             r_click: gpioa.pa1.into_pull_up_input(),
             l_click: gpioa.pa0.into_pull_up_input(),
             w_click: gpioa.pa6.into_pull_up_input(),
@@ -264,13 +261,16 @@ const APP: () = {
         fn EXTI0();
     }
     
-    #[task(binds=OTG_FS, resources = [led, r_click, l_click, w_click, M1_click, M2_click, scroll_up, scroll_down, Scaler, hid, pmw3389, usb_dev], priority = 2)]
+    #[task(binds=OTG_FS, resources = [led_r, led_g, led_b, r_click, l_click, w_click, M1_click, M2_click, scroll_up, scroll_down, Scaler, hid, pmw3389, usb_dev], priority = 2)]
     fn toggle(cx: toggle::Context) {
         static mut PREV_UP: bool = false;
         static mut PREV_DOWN: bool = false;
 
         let myScaler = cx.resources.Scaler;
         let hid = cx.resources.hid;
+        let led_r = cx.resources.led_r;
+        let led_g = cx.resources.led_g;
+        let led_b = cx.resources.led_b;
         let r_click = cx.resources.r_click;
         let l_click = cx.resources.l_click;
         let w_click = cx.resources.w_click;
@@ -286,21 +286,34 @@ const APP: () = {
         *PREV_DOWN = down;
         let mut POS_X: i64 = 0;
         let mut POS_Y: i64 = 0;
-        if M1_click.is_high().unwrap() {
-            //if cx.resources.led.is_low().unwrap(){
-              // _toggleable_generic(cx.resources.led); //Utilize the generic toggle function, toggle variable no longer needed
-               //}
-        }
-        if M2_click.is_high().unwrap() {
-            //if cx.resources.led.is_low().unwrap(){
-              // _toggleable_generic(cx.resources.led); //Utilize the generic toggle function, toggle variable no longer needed
-               //}
-        }
-        else{
-            if cx.resources.led.is_low().unwrap() && r_click.is_low().unwrap() && l_click.is_low().unwrap() {
-                //_toggleable_generic(cx.resources.led);
+
+        //LEDs
+        let mut  state: i8 = 0;
+        if l_click.is_high().unwrap(){
+            if led_r.is_high().unwrap(){
+                state = 1;
+            }
+            else{
+                state = 2;
             }
         }
+        if l_click.is_low().unwrap() && r_click.is_high().unwrap(){
+            if led_b.is_high().unwrap(){
+                state = 3;
+            }
+            else{
+                state = 4;
+            }
+        }
+        else{
+            if led_g.is_high().unwrap(){
+                state = 5;
+            }
+            else{
+                state = 6;
+            }
+        }
+        toggle_led(state, led_r, led_g, led_b);
         
         let (x, y) = cx.resources.pmw3389.read_status().unwrap();
         //rprintln!("{} {}", x as i64, y as i64);
@@ -335,18 +348,41 @@ const APP: () = {
     }
 };
 
-fn _toggle_generic<E>(led: &mut dyn OutputPin<Error = E>, toggle: &mut bool) {
-    if *toggle {
-        led.set_high().ok();
-    } else {
-        led.set_low().ok();
-    }
-
-    *toggle = !*toggle;
-}
-
 fn _toggleable_generic<E>(led: &mut dyn ToggleableOutputPin<Error = E>) {
     led.toggle().ok();
+}
+
+fn toggle_led<E>(state: i8, led_r: &mut dyn OutputPin<Error = E>, led_g: &mut dyn OutputPin<Error = E>, led_b: &mut dyn OutputPin<Error = E>) {
+    if state == 1{
+        led_r.set_low();
+        led_g.set_high();
+        led_b.set_high();
+    }
+    if state == 2{
+        led_r.set_high();
+        led_g.set_high();
+        led_b.set_high();
+    }
+    if state == 3{
+        led_r.set_high();
+        led_g.set_high();
+        led_b.set_low();
+    }
+    if state == 4{
+        led_r.set_high();
+        led_g.set_high();
+        led_b.set_high();
+    }
+    if state == 5{
+        led_r.set_high();
+        led_g.set_low();
+        led_b.set_high();
+    }
+    if state == 6{
+        led_r.set_high();
+        led_g.set_high();
+        led_b.set_high();
+    };
 }
 
 fn calculate_scroll(up: bool, down: bool, prev_up: bool, prev_down: bool) -> i8 {
@@ -372,159 +408,3 @@ fn calculate_scroll(up: bool, down: bool, prev_up: bool, prev_down: bool) -> i8 
     }
     return wheel_count;
 }
-
-// 1. In this example you will use RTT.
-//
-//    > cargo run --example rtic_bare7
-//
-//    Look in the generated documentation for `set_high`/`set_low`.
-//    (You created documentation for your dependencies in previous exercise
-//    so you can just search (press `S`) for `OutputPin`).
-//    You will find that these methods are implemented for `Output` pins.
-//
-//    Now change your code to use these functions instead of the low-level GPIO API.
-//
-//    HINTS:
-//    - A GPIOx peripheral can be `split` into individual PINs Px0..Px15).
-//    - A Pxy, can be turned into an `Output` by `into_push_pull_output`.
-//    - You may optionally set other pin properties as well (such as `speed`).
-//    - An `Output` pin provides `set_low`/`set_high`
-//    - Instead of passing `GPIO` resource to the `toggle` task pass the
-//      `led: PA5<Output<PushPull>>` resource instead.
-//
-//    Comment your code to explain the steps taken.
-//
-//    ** My answer here **
-//    1. We had to change around in the resources, as the GPIO is no longer needed
-//    this means that we have to uncomment the led variable in the resources struct
-//    and insert the correct struct into lateresources.
-//    2. Now we have our resources set up, so I changed the GPIO into led under the 
-//    toggle function.
-//
-//    Confirm that your implementation correctly toggles the LED as in
-//    previous exercise.
-//
-//    Commit your code (bare7_1)
-//
-// 2. Further generalizations:
-//
-//    Now look at the documentation for `embedded_hal::digital::v2::OutputPin`.
-//
-//    You see that the OutputPin trait defines `set_low`/`set_high` functions.
-//    Your task is to alter the code to use the `set_low`/`set_high` API.
-//
-//    The function `_toggle_generic` is generic to any object that
-//    implements the `OutputPin<Error = E>` trait.
-//
-//    Digging deeper we find the type parameter `E`, which in this case
-//    is left generic (unbound).
-//
-//    It will be instantiated with a concrete type argument when called.
-//
-//    Our `PA5<Output<PushPull>>` implements `OutputPin` trait, thus
-//    we can pass the `led` resource to `_toggle_generic`.
-//    
-//    The error type is given by the stm32f4xx-hal implementation:
-//    where `core::convert::Infallible` is used to indicate
-//    there are no errors to be expected (hence infallible).
-//
-//    Additionally, `_toggle_generic` takes a mutable reference
-//    `toggle: &mut bool`, so you need to pass your `TOGGLE` variable.
-//
-//    As you see, `TOGGLE` holds the "state", switching between
-//    `true` and `false` (to make your led blink).
-//
-//    Change your code into using the `_toggle_generic` function.
-//    (You may rename it to `toggle_generic` if wished.)
-//
-//    Confirm that your implementation correctly toggles the LED as in
-//    previous exercise.
-//
-//    Commit your code (bare7_2)
-//
-//    ** My answer here **
-//    This was merely a question of passing the toggle variable to the generic function.
-//
-// 3. What about the state?
-//
-//    In your code `TOGGLE` holds the "state". However, the underlying
-//    hardware ALSO holds the state (if the corresponding bit is set/cleared).
-//
-//    What if we can leverage that, and guess what we can!!!!
-//
-//    Look at the documentation for `embedded_hal::digital::v2::ToggleableOutputPin`,
-//    and the implementation of:
-//
-//    fn _toggleable_generic(led: &mut dyn ToggleableOutputPin<Error = Infallible>) {
-//      led.toggle().ok();
-//    }
-//
-//    The latter does not take any state variable, instead it directly `toggle()`
-//    the `ToggleableOutputPin`.
-//
-//    Now alter your code to leverage on the `_toggleable_generic` function.
-//    (You should be able to remove the `TOGGLE` state variable altogether.)
-//
-//    Confirm that your implementation correctly toggles the LED as in
-//    previous exercise.
-//
-//    ** My answer here **
-//    This is merely a question of uncommenting the toggle variable, as well
-//    as the calls to the functions we are not to use. Since the toggleable_generic
-//    works in the same was as toggle_generic, in the sense that it generically
-//    handles pins which we can read and write from, so passing the led resource
-//    is enough.
-//
-//    Commit your code (bare7_3)
-//
-// 4. Discussion:
-//
-//    In this exercise you have gone from a very hardware specific implementation,
-//    to leveraging abstractions (batteries included).
-//
-//    Your final code amounts to "configuration" rather than "coding".
-//
-//    This reduces the risk of errors (as you let the libraries do the heavy lifting).
-//
-//    This also improves code-re use. E.g., if you were to do something less
-//    trivial then merely toggling you can do that in a generic manner,
-//    breaking out functionality into "components" re-usable in other applications.
-//
-//    Of course the example is trivial, you don't gain much here, but the principle
-//    is the same behind drivers for USART communication, USB, PMW3389 etc.
-//
-// 5. More details:
-//    
-//    Looking closer at the implementation:
-//    `led: &mut dyn OutputPin<Error = E>`
-//
-//    You may ask what kind of mumbo jumbo is at play here.
-//
-//    This is the way to express that we expect a mutable reference to a trait object 
-//    that implements the `OutputPin`. Since we will change the underlying object
-//    (in this case an GPIOA pin 5) the reference needs to be mutable.
-// 
-//    Trait objects are further explained in the Rust book.
-//    The `dyn` keyword indicates dynamic dispatch (through a VTABLE).
-//    https://doc.rust-lang.org/std/keyword.dyn.html
-//
-//    Notice: the Rust compiler (rustc + LLVM) is really smart. In many cases
-//    it can analyse the call chain, and conclude the exact trait object type at hand.
-//    In such cases the dynamic dispatch is turned into a static dispatch
-//    and the VTABLE is gone, and we have a zero-cost abstraction.
-//
-//    If the trait object is stored for e.g., in an array along with other
-//    trait objects (of different concrete type), there is usually no telling
-//    the concrete type of each element, and we will have dynamic dispatch.
-//    Arguably, this is also a zero-cost abstraction, as there is no (obvious)
-//    way to implement it more efficiently. Remember, zero-cost is not without cost
-//    just that it is as good as it possibly gets (you can't make it better by hand).
-//
-//    You can also force the compiler to deduce the type at compile time, by using
-//    `impl` instead of `dyn`, if you are sure you don't want the compiler to
-//    "fallback" to dynamic dispatch.
-//
-//    You might find Rust to have long compile times. Yes you are right,
-//    and this type of deep analysis done in release mode is part of the story.
-//    On the other hand, the aggressive optimization allows us to code 
-//    in a generic high level fashion and still have excellent performing binaries.
