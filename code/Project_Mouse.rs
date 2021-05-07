@@ -95,12 +95,13 @@ const APP: () = {
         scl_minus: PA3<Input<PullUp>>,
         scroll_up: PA10<Input<PullUp>>,
         scroll_down: PA15<Input<PullUp>>,
-        Scaler: f32, //rtic::Mutex,
+        Scaler: f32,
         Counter: u8,
         Led_Counter: u16,
         Scale_modify: bool,
     }
     
+    // Initializing function
     #[init(schedule = [toggle_speed])]
     fn init(cx: init::Context) -> init::LateResources {
         static mut USB_BUS: Option<UsbBusAllocator<UsbBusType>> = None;
@@ -161,7 +162,6 @@ const APP: () = {
 
         let delay = DwtDelay::new(&mut core.DWT, clocks);
         let mut pmw3389 = pmw3389::Pmw3389::new(spi, cs, delay).unwrap();
-        // set in burst mode
         pmw3389.write_register(Register::MotionBurst, 0x00);
         let scaler = 1.0;
         let scale_modify = false;
@@ -196,13 +196,12 @@ const APP: () = {
 
     #[idle]
     fn idle(_cx: idle::Context) -> ! {
-        rprintln!("idle");
         loop {
             continue;
         }
     }
 
-    //Increase or lower frequency
+    //Increase or decrease the sensitivity of the mouse
     #[task(resources = [scl_minus, scl_plus, Scaler, Scale_modify], priority = 1, schedule = [toggle_speed])]
     fn toggle_speed(mut cx: toggle_speed::Context) {
 
@@ -240,11 +239,13 @@ const APP: () = {
         fn EXTI0();
     }
     
+    // Builds and sends the mouse report
     #[task(binds=OTG_FS, resources = [Led_Counter, led_r, led_g, led_b, r_click, l_click, w_click, M1_click, M2_click, scroll_up, scroll_down, Scaler, hid, pmw3389, usb_dev], priority = 2)]
-    fn toggle(cx: toggle::Context) {
+    fn report(cx: report::Context) {
         static mut PREV_UP: bool = false;
         static mut PREV_DOWN: bool = false;
 
+        //Setting up the resources
         let Led_Counter = cx.resources.Led_Counter;
         let myScaler = cx.resources.Scaler;
         let hid = cx.resources.hid;
@@ -257,10 +258,8 @@ const APP: () = {
         let M1_click = cx.resources.M1_click;
         let M2_click = cx.resources.M2_click;
         let usb_dev = cx.resources.usb_dev;
-        let scroll_up = cx.resources.scroll_up;
-        let scroll_down = cx.resources.scroll_down;
-        let up = scroll_up.is_high().unwrap();
-        let down = scroll_down.is_high().unwrap();
+        let up = cx.resources.scroll_up.is_high().unwrap();
+        let down = cx.resources.scroll_down.is_high().unwrap();
         let wheel_count = calculate_scroll(up, down, *PREV_UP, *PREV_DOWN);
         *PREV_UP = up;
         *PREV_DOWN = down;
@@ -299,8 +298,10 @@ const APP: () = {
             *Led_Counter = *Led_Counter + 1;
         }
         
+        // Fetch values from the sensor
         let (x, y) = cx.resources.pmw3389.read_status().unwrap();
 
+        // Build and send the report
         let report = PMouseReport {
             buttons: ((M1_click.is_high().unwrap() as u8) << 4
                 | (M2_click.is_high().unwrap() as u8) << 3
@@ -329,7 +330,7 @@ const APP: () = {
     }
 };
 
-
+// Toggles the LEDs according to the state
 fn toggle_led<E>(state: i8, led_r: &mut dyn OutputPin<Error = E>, led_g: &mut dyn OutputPin<Error = E>, led_b: &mut dyn OutputPin<Error = E>) {
     if state == 1{
         led_r.set_low();
@@ -363,6 +364,7 @@ fn toggle_led<E>(state: i8, led_r: &mut dyn OutputPin<Error = E>, led_g: &mut dy
     };
 }
 
+// Calculates the scroll direction depending on an incremental encoder
 fn calculate_scroll(up: bool, down: bool, prev_up: bool, prev_down: bool) -> i8 {
     let mut wheel_count: i8 = 0;
 
