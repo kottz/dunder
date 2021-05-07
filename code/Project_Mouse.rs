@@ -3,19 +3,18 @@
 use embedded_hal::spi::MODE_3;
 use panic_rtt_target as _;
 use rtt_target as _;
-use cortex_m::{asm::delay, peripheral::DWT};
-use embedded_hal::digital::v2::{OutputPin, ToggleableOutputPin};
+use cortex_m::{peripheral::DWT};
+use embedded_hal::digital::v2::{OutputPin};
 use stm32f4xx_hal::{
-    gpio,
     otg_fs::{UsbBus, UsbBusType, USB},
     prelude::*,
 };
 use usb_device::{bus::UsbBusAllocator, prelude::*};
 use usbd_hid::{
-    descriptor::{generator_prelude::*, MouseReport},
+    descriptor::{generator_prelude::*},
     hid_class::HIDClass
 };
-use app::{DwtDelay, pmw3389::{self, Register}, pmw3389e};
+use app::{DwtDelay, pmw3389::{self, Register}};
 use usbd_hid::descriptor::SerializedDescriptor;
 use usbd_hid::descriptor::AsInputReport;
 use usbd_hid::descriptor::gen_hid_descriptor;
@@ -46,19 +45,15 @@ pub struct PMouseReport {
     pub wheel: i8, // Scroll down (negative) or up (positive) this many units
 }
 
-use rtic::cyccnt::{Instant, U32Ext as _};
+use rtic::cyccnt::{U32Ext as _};
 use stm32f4xx_hal::{
-    dwt::Dwt,
     gpio::Speed,
     gpio::{
         gpiob::{PB10, PB12},
         gpioc::{PC2, PC3},
         Alternate, Output, PushPull,
     },
-    prelude::*,
-    rcc::Clocks,
     spi::Spi,
-    stm32,
 };
 
 type PMW3389T = pmw3389::Pmw3389<
@@ -73,15 +68,10 @@ type PMW3389T = pmw3389::Pmw3389<
     PB12<Output<PushPull>>,
 >;
 use rtt_target::{rprintln, rtt_init_print};
-use stm32f4xx_hal::nb::block;
-//use rtic_core::Mutex;
 
 use stm32f4xx_hal::{
     gpio::{gpioa::PA7, gpioa::PA8, gpioa::PA9},
     gpio::{gpioa::PA0, gpioa::PA1, gpioa::PA2, gpioa::PA3, gpioa::PA4, gpioa::PA5, gpioa::PA6, gpioa::PA10, gpioa::PA15, Input, PullUp},
-    //gpio::{gpioc::PC10},
-    //gpio::{gpioc::PC12},
-    prelude::*,
 };
 
 const OFFSET: u32 = 1_000_000;
@@ -107,6 +97,7 @@ const APP: () = {
         scroll_down: PA15<Input<PullUp>>,
         Scaler: f32, //rtic::Mutex,
         Counter: u8,
+        Led_Counter: u16,
         Scale_modify: bool,
     }
     
@@ -125,23 +116,13 @@ const APP: () = {
 
         let clocks = rcc
             .cfgr
-            // .use_hse(8.mhz())
             .sysclk(48.mhz())
             .pclk1(24.mhz())
             .freeze();
 
-        // assert!(clocks.usbclk_valid());
 
         let gpioa = cx.device.GPIOA.split();
 
-        // Pull the D+ pin down to send a RESET condition to the USB bus.
-        //let mut usb_dp = gpioa.pa12.into_push_pull_output();
-        //usb_dp.set_low().ok();
-        //delay(clocks.sysclk().0 / 100);
-        //let usb_dp = usb_dp.into_floating_input();
-        //cortex_m::asm::delay(100);
-
-        //let usb_dm = gpioa.pa11;
 
         let usb = USB {
             usb_global: cx.device.OTG_FS_GLOBAL,
@@ -188,12 +169,9 @@ const APP: () = {
         let now = cx.start;
             
         cx.schedule.toggle_speed(now + ((OFFSET)).cycles()).unwrap();
-        //cx.schedule.toggle(now + ((OFFSET)).cycles()).unwrap();
-        //let mut led = ;
-        //led.set_low().ok();
+
         // pass on late resources
         init::LateResources {
-            //GPIOA: device.GPIOA,
             hid,
             usb_dev,
             led_r: gpioa.pa7.into_push_pull_output(),
@@ -210,6 +188,7 @@ const APP: () = {
             scroll_down: gpioa.pa15.into_pull_up_input(),
             Scaler: scaler,
             Counter: 0,
+            Led_Counter: 0,
             Scale_modify: scale_modify,
             pmw3389,
             }      
@@ -226,8 +205,8 @@ const APP: () = {
     //Increase or lower frequency
     #[task(resources = [scl_minus, scl_plus, Scaler, Scale_modify], priority = 1, schedule = [toggle_speed])]
     fn toggle_speed(mut cx: toggle_speed::Context) {
-        let Scale_modify = *cx.resources.Scale_modify;
-            if (cx.resources.scl_plus.is_high().unwrap() && !*cx.resources.Scale_modify){
+
+            if cx.resources.scl_plus.is_high().unwrap() && !*cx.resources.Scale_modify {
                 *cx.resources.Scale_modify = true;
                 cx.resources.Scaler.lock(|Scaler| {
                     *Scaler += 0.1;
@@ -238,7 +217,7 @@ const APP: () = {
                     *cx.resources.Scale_modify = false;
                 }
             }
-            if (cx.resources.scl_minus.is_high().unwrap() && !*cx.resources.Scale_modify){
+            if cx.resources.scl_minus.is_high().unwrap() && !*cx.resources.Scale_modify {
                 *cx.resources.Scale_modify = true;
                 cx.resources.Scaler.lock(|Scaler| {
                 if *Scaler != 1.0 && !(*Scaler < 1.0){
@@ -285,13 +264,11 @@ const APP: () = {
         let wheel_count = calculate_scroll(up, down, *PREV_UP, *PREV_DOWN);
         *PREV_UP = up;
         *PREV_DOWN = down;
-        let mut POS_X: i64 = 0;
-        let mut POS_Y: i64 = 0;
 
         //LEDs
-        let mut  state: i8 = 0;
-        if *Led_Counter == 10{
-            *Led_Counter = 0 as u8;
+        let state: i8;
+        if *Led_Counter == 1000{
+            *Led_Counter = 0 as u16;
             if l_click.is_high().unwrap(){
                 if led_r.is_high().unwrap(){
                     state = 1;
@@ -300,7 +277,7 @@ const APP: () = {
                     state = 2;
                 }
             }
-            if l_click.is_low().unwrap() && r_click.is_high().unwrap(){
+            else if l_click.is_low().unwrap() && r_click.is_high().unwrap(){
                 if led_b.is_high().unwrap(){
                     state = 3;
                 }
@@ -319,21 +296,19 @@ const APP: () = {
             toggle_led(state, led_r, led_g, led_b);
             }
         else{
-            *Led_Counter = *Led_Counter + 1 as u8;
+            *Led_Counter = *Led_Counter + 1;
         }
         
         let (x, y) = cx.resources.pmw3389.read_status().unwrap();
-        //rprintln!("{} {}", x as i64, y as i64);
-        POS_X = x as f32;
-        POS_Y = y as f32;
+
         let report = PMouseReport {
             buttons: ((M1_click.is_high().unwrap() as u8) << 4
                 | (M2_click.is_high().unwrap() as u8) << 3
                 | (w_click.is_high().unwrap() as u8) << 2
                 | (r_click.is_high().unwrap() as u8) << 1
                 | (l_click.is_high().unwrap() as u8)),
-            x: ((-POS_X * *myScaler) as i8)>>1,
-            y: ((-POS_Y * *myScaler) as i8)>>1,
+            x: ((-x as f32 * *myScaler) as i8)>>1,
+            y: ((-y as f32 * *myScaler) as i8)>>1,
             wheel: wheel_count,
         };
         hid.push_input(&report).ok();
@@ -343,7 +318,6 @@ const APP: () = {
         }
    
         
-        //cx.schedule.toggle(cx.scheduled + ((*myScaler as u32 * OFFSET)).cycles()).unwrap();
     }
 
     extern "C" {
@@ -355,9 +329,6 @@ const APP: () = {
     }
 };
 
-fn _toggleable_generic<E>(led: &mut dyn ToggleableOutputPin<Error = E>) {
-    led.toggle().ok();
-}
 
 fn toggle_led<E>(state: i8, led_r: &mut dyn OutputPin<Error = E>, led_g: &mut dyn OutputPin<Error = E>, led_b: &mut dyn OutputPin<Error = E>) {
     if state == 1{
