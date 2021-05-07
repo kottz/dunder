@@ -261,11 +261,12 @@ const APP: () = {
         fn EXTI0();
     }
     
-    #[task(binds=OTG_FS, resources = [led_r, led_g, led_b, r_click, l_click, w_click, M1_click, M2_click, scroll_up, scroll_down, Scaler, hid, pmw3389, usb_dev], priority = 2)]
+    #[task(binds=OTG_FS, resources = [Led_Counter, led_r, led_g, led_b, r_click, l_click, w_click, M1_click, M2_click, scroll_up, scroll_down, Scaler, hid, pmw3389, usb_dev], priority = 2)]
     fn toggle(cx: toggle::Context) {
         static mut PREV_UP: bool = false;
         static mut PREV_DOWN: bool = false;
 
+        let Led_Counter = cx.resources.Led_Counter;
         let myScaler = cx.resources.Scaler;
         let hid = cx.resources.hid;
         let led_r = cx.resources.led_r;
@@ -289,31 +290,37 @@ const APP: () = {
 
         //LEDs
         let mut  state: i8 = 0;
-        if l_click.is_high().unwrap(){
-            if led_r.is_high().unwrap(){
-                state = 1;
+        if Led_Counter == 10{
+            Led_Counter = 0;
+            if l_click.is_high().unwrap(){
+                if led_r.is_high().unwrap(){
+                    state = 1;
+                }
+                else{
+                    state = 2;
+                }
+            }
+            if l_click.is_low().unwrap() && r_click.is_high().unwrap(){
+                if led_b.is_high().unwrap(){
+                    state = 3;
+                }
+                else{
+                    state = 4;
+                }
             }
             else{
-                state = 2;
+                if led_g.is_high().unwrap(){
+                    state = 5;
+                }
+                else{
+                    state = 6;
+                }
             }
-        }
-        if l_click.is_low().unwrap() && r_click.is_high().unwrap(){
-            if led_b.is_high().unwrap(){
-                state = 3;
+            toggle_led(state, led_r, led_g, led_b);
             }
-            else{
-                state = 4;
-            }
-        }
         else{
-            if led_g.is_high().unwrap(){
-                state = 5;
-            }
-            else{
-                state = 6;
-            }
+            Led_Counter = Led_Counter + 1;
         }
-        toggle_led(state, led_r, led_g, led_b);
         
         let (x, y) = cx.resources.pmw3389.read_status().unwrap();
         //rprintln!("{} {}", x as i64, y as i64);
