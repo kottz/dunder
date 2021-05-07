@@ -205,7 +205,7 @@ const APP: () = {
     #[task(resources = [scl_minus, scl_plus, Scaler, Scale_modify], priority = 1, schedule = [toggle_speed])]
     fn toggle_speed(mut cx: toggle_speed::Context) {
 
-            if cx.resources.scl_plus.is_high().unwrap() && !*cx.resources.Scale_modify {
+            if cx.resources.scl_plus.is_high().unwrap() && !*cx.resources.Scale_modify && cx.resources.scl_minus.is_low().unwrap() {
                 *cx.resources.Scale_modify = true;
                 cx.resources.Scaler.lock(|Scaler| {
                     *Scaler += 0.1;
@@ -216,7 +216,7 @@ const APP: () = {
                     *cx.resources.Scale_modify = false;
                 }
             }
-            if cx.resources.scl_minus.is_high().unwrap() && !*cx.resources.Scale_modify {
+            if cx.resources.scl_minus.is_high().unwrap() && !*cx.resources.Scale_modify && cx.resources.scl_plus.is_low().unwrap() {
                 *cx.resources.Scale_modify = true;
                 cx.resources.Scaler.lock(|Scaler| {
                 if *Scaler != 1.0 && !(*Scaler < 1.0){
