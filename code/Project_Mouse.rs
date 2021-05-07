@@ -290,8 +290,8 @@ const APP: () = {
 
         //LEDs
         let mut  state: i8 = 0;
-        if Led_Counter == 10{
-            Led_Counter = 0;
+        if *Led_Counter == 10{
+            *Led_Counter = 0 as u8;
             if l_click.is_high().unwrap(){
                 if led_r.is_high().unwrap(){
                     state = 1;
@@ -319,7 +319,7 @@ const APP: () = {
             toggle_led(state, led_r, led_g, led_b);
             }
         else{
-            Led_Counter = Led_Counter + 1;
+            *Led_Counter = *Led_Counter + 1 as u8;
         }
         
         let (x, y) = cx.resources.pmw3389.read_status().unwrap();
