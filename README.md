@@ -43,9 +43,11 @@ _**3D model**_
 
 _**Real board**_
 -----------
-Version 1
+##### Version 1
+
 ![Real board picture](Pictures/Real_board.jpg)
-Version 2
+##### Version 2
+
 ![Real board v2 picture](Pictures/Real_board_v2.jpg)
 
 # _**Custom case**_
