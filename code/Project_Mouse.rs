@@ -162,7 +162,41 @@ const APP: () = {
 
         let delay = DwtDelay::new(&mut core.DWT, clocks);
         let mut pmw3389 = pmw3389::Pmw3389::new(spi, cs, delay).unwrap();
+
+        pmw3389.write_register(Register::Motion, 0x20);
+        pmw3389.write_register(Register::RippleControl, 0x07);
+        pmw3389.write_register(Register::ResolutionL, 0x00);
+        pmw3389.write_register(Register::ResolutionH, 0x42);
+        pmw3389.write_register(Register::Config2, 0x20);
+        pmw3389.write_register(Register::AngleTune, 0x00);
+        pmw3389.write_register(Register::FrameCapture, 0x00);
+        pmw3389.write_register(Register::RunDownshift, 0x32);
+        pmw3389.write_register(Register::Rest1RateLower, 0x00);
+        pmw3389.write_register(Register::Rest1RateUpper, 0x00);
+        pmw3389.write_register(Register::Rest1Downshift, 0x1F);
+        pmw3389.write_register(Register::Rest2RateLower, 0x63);
+        pmw3389.write_register(Register::Rest2RateUpper, 0x00);
+        pmw3389.write_register(Register::Rest2Downshift, 0xBC);
+        pmw3389.write_register(Register::Rest3RateLower, 0xF3);
+        pmw3389.write_register(Register::Rest3RateUpper, 0x01);
+        pmw3389.write_register(Register::Observation, 0x00);
+        pmw3389.write_register(Register::MinSQRun, 0x10);
+        pmw3389.write_register(Register::RawDataThreshold, 0x0A);
+        pmw3389.write_register(Register::Control2, 0x00);
+        pmw3389.write_register(Register::Config5L, 0x00);
+        pmw3389.write_register(Register::Config5H, 0x00);
+        pmw3389.write_register(Register::LiftCutoffTune3, 0x00);
+        pmw3389.write_register(Register::AngleSnap, 0x00);
+        pmw3389.write_register(Register::LiftCutoffTune1, 0x00);
         pmw3389.write_register(Register::MotionBurst, 0x00);
+        pmw3389.write_register(Register::LiftConfig, 0x02);
+        pmw3389.write_register(Register::LiftCutoffTune2Timeout, 0x27);
+        pmw3389.write_register(Register::LiftCutoffTune2MinLength, 0x09);
+        pmw3389.write_register(Register::PWMPeriodCnt, 0x00);
+        pmw3389.write_register(Register::PWMWidthCnt, 0x00);
+
+        
+        
         let scaler = 1.0;
         let scale_modify = false;
 
@@ -266,7 +300,7 @@ const APP: () = {
 
         //LEDs
         let state: i8;
-        if *Led_Counter == 1000{
+        if *Led_Counter == 75{
             *Led_Counter = 0 as u16;
             if l_click.is_high().unwrap(){
                 if led_r.is_high().unwrap(){
@@ -277,20 +311,22 @@ const APP: () = {
                 }
             }
             else if l_click.is_low().unwrap() && r_click.is_high().unwrap(){
-                if led_b.is_high().unwrap(){
-                    state = 3;
-                }
-                else{
-                    state = 4;
-                }
+                //if led_b.is_high().unwrap(){
+                //    state = 3;
+                //}
+                //else{
+                //    state = 4;
+                //}
+                state = 3;
             }
             else{
-                if led_g.is_high().unwrap(){
-                    state = 5;
-                }
-                else{
-                    state = 6;
-                }
+                state = 5;
+               // if led_g.is_high().unwrap(){
+                //    state = 5;
+                //}
+                //else{
+                //    state = 6;
+                //}
             }
             toggle_led(state, led_r, led_g, led_b);
             }
