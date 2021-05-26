@@ -43,16 +43,35 @@ _**3D model**_
 
 _**Real board**_
 -----------
+Version 1
 ![Real board picture](Pictures/Real_board.jpg)
+Version 2
+![Real board v2 picture](Pictures/Real_board_v2.jpg)
 
-# _**Custom shell**_
+# _**Custom case**_
 -----------
+The case was designed from scratch using Fusion 360.
+
+![mouse design](3d_case/images/mouse_design.png)
+![mouse design opacity](3d_case/images/mouse_design_opacity_60.png)
+![mouse design board](3d_case/images/mouse_design_board.png)
+![mouse design bottom_plate](3d_case/images/mouse_design_bottom_plate.png)
+![mouse design sensor cutout](3d_case/images/mouse_design_sensor_cutout.png)
+
+# _**Demo**_
+-----------
+##### Demo of mouse functionality
+[![functionality demo](https://img.youtube.com/vi/CS7f9UfwIrw/0.jpg)](https://www.youtube.com/watch?v=CS7f9UfwIrw "Demo of mouse functionality")
+
+##### Demo of 3D printed case
+[![3d case demo](https://img.youtube.com/vi/qKGdOuxL4AI/0.jpg)](https://www.youtube.com/watch?v=qKGdOuxL4AI "Demo of 3d printed case")
+
 
 # **_Contributors_**
 -----------
 
 Edward Källstedt - edwkll-7@student.ltu.se (Grade goal 5)
 
-Kalle Löfgren - kallfg-3@student.ltu.se
+Kalle Löfgren - kallfg-3@student.ltu.se (Grade goal 5)
 
-Carmen Acín Rouco - caracn-0@student.ltu.se
+Carmen Acín Rouco - caracn-0@student.ltu.se (Grade goal 5)
