@@ -1,4 +1,5 @@
-## MOUSE - Minimal Output User Signal Encoder
+## Dunder
+A fully* functioning mouse implemented from scratch.
 
 # _**Intended features**_
 -----------
@@ -67,13 +68,3 @@ The case was designed from scratch using Fusion 360.
 
 ##### Demo of 3D printed case
 [![3d case demo](https://img.youtube.com/vi/qKGdOuxL4AI/0.jpg)](https://www.youtube.com/watch?v=qKGdOuxL4AI "Demo of 3d printed case")
-
-
-# **_Contributors_**
------------
-
-Edward Källstedt - edwkll-7@student.ltu.se (Grade goal 5)
-
-Kalle Löfgren - kallfg-3@student.ltu.se (Grade goal 5)
-
-Carmen Acín Rouco - caracn-0@student.ltu.se (Grade goal 5)
