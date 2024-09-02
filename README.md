@@ -1,4 +1,4 @@
-## Dunder
+# Dunder
 A fully* functioning mouse implemented from scratch.
 
 # _**Intended features**_
